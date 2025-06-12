@@ -3,6 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Used for flashing messages
+create_db()
 
 # Function to create a database and table if it doesn't exist
 def create_db():
@@ -76,5 +77,4 @@ def view_data():
     return render_template('view_data.html', rows=rows)
 
 if __name__ == "__main__":
-    create_db()  # Create the database and table if not already created
     app.run(debug=True)
