@@ -1,9 +1,6 @@
+# This comment is to force a re-deployment.
 from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
-
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Used for flashing messages
-create_db()
 
 # Function to create a database and table if it doesn't exist
 def create_db():
@@ -18,6 +15,10 @@ def create_db():
     )''')
     conn.commit()
     conn.close()
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Used for flashing messages
+create_db()
 
 # Function to insert data into the database
 def insert_data(username, microscope_size, real_life_size):
