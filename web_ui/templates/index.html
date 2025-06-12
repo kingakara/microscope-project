@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specimen Size Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        label { display: block; margin: 10px 0 5px; }
+        input { padding: 8px; width: 200px; margin: 5px 0 20px; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Specimen Size Calculator</h1>
+    <form method="POST" action="/calculate">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="microscope_size">Enter the microscope size (in millimeters):</label>
+        <input type="text" id="microscope_size" name="microscope_size" required>
+
+        <label for="magnification">Enter the magnification factor:</label>
+        <input type="text" id="magnification" name="magnification" required>
+
+        <button type="submit">Calculate and Save</button>
+    </form>
+
+    <br>
+    <a href="/view_data">View Stored Data</a>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p class="{{ category }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
